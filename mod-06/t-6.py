@@ -1,6 +1,7 @@
 ﻿import math
 import unitConverter
 import inputHandler
+from inputHandler import InputFlags
 from typing import NamedTuple
 class Pizza(NamedTuple):
     price: float
@@ -13,12 +14,12 @@ def circle_area(diameter: float) -> float:
     radius = diameter / 2.0
     return math.pi * math.pow(radius, 2)
 
-pizzaCount = inputHandler.getIntInput("Enter the number of pizzas: ", "Invalid input. Please enter a valid integer.")
+pizzaCount = inputHandler.getIntInput("Enter the number of pizzas: ", flags=InputFlags.POSITIVE | InputFlags.NON_ZERO)
 pizzaList: list[Pizza] = []
 
 for i in range(pizzaCount):
-    inputDiameter_cm = inputHandler.getFloatInput("Enter the diameter of the pizza in cm: ", "Invalid input. Please enter a valid number.")
-    inputPrice = inputHandler.getFloatInput("Enter the price of the pizza in euros: ", "Invalid input. Please enter a valid number.")
+    inputDiameter_cm = inputHandler.getFloatInput("Enter the diameter of the pizza in cm: ", flags=InputFlags.POSITIVE | InputFlags.NON_ZERO)
+    inputPrice = inputHandler.getFloatInput("Enter the price of the pizza in euros: ", flags=InputFlags.POSITIVE | InputFlags.NON_ZERO)
 
     pizza = Pizza(price=inputPrice, diameter=inputDiameter_cm)
     pizzaList.append(pizza)
