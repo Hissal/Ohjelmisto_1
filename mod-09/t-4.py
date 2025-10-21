@@ -22,7 +22,7 @@ def print_cars_table(cars: list[Car]) -> None:
 cars: list[Car] = []
 for i in range(10):
     top_speed: float = random.uniform(100, 200)
-    car = Car(f"ABC-{i}", top_speed)
+    car = Car(f"ABC-{i + 1}", top_speed)
     cars.append(car)
 
 longest_distance: float = 0.0
