@@ -3,7 +3,6 @@ import requests
 from dataclasses import dataclass
 from dotenv import load_dotenv, find_dotenv
 
-# Ensure .env is loaded even if it contains a UTF-8 BOM (common on Windows editors)
 load_dotenv(encoding="utf-8-sig")
 
 BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
@@ -27,6 +26,7 @@ def _get_api_key(existing_key: str | None) -> str:
     if env_api_key:
         return env_api_key
     raise ValueError("API key must be provided either as a parameter or via the OPENWEATHER_API_KEY environment variable.")
+
 
 def get_weather(city: str, existing_key: str | None = None) -> dict:
     api_key = _get_api_key(existing_key)
